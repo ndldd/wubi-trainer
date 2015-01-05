@@ -1,0 +1,147 @@
+<div ng-controller="FeedbackController">
+
+
+    <div layout="row" layout-margin ng-if="debugSettings.showKeystrokes">
+
+        keystrokes: {{display.display}}
+
+    </div>
+
+    <md-button ng-click="toggleRight()" class="md-primary">
+        show character help
+    </md-button>
+    <div ng-controller="PromptController">
+
+        <div layout="row" layout-align="center center" ng-controller="KeyBoardInput">
+
+            <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right" ng-enter>
+                <md-toolbar class="md-theme-light">
+                    <h1 class="md-toolbar-tools">Character Help</h1>
+                </md-toolbar>
+                <md-content ng-controller="RightSideNavController" class="md-padding">
+                    <md-button ng-click="close()" class="md-primary">
+                        Close
+                    </md-button>
+                    <div>
+
+                        This character component is located on the
+                          <span class="keyboard-key"> {{data.promptCharacter.key.toUpperCase()}}
+                                </span> key.
+                    </div>
+
+
+                    <div>
+                        Group: <span ng-bind-html="data.characterGroupSymbol " class="character-group"> </span>
+                    </div>
+                    <div>
+
+                        (First Stroke is in the {{data.promptCharacter.group}} group)
+                    </div>
+
+
+                </md-content>
+            </md-sidenav>
+            <md-button class="md-raised md-warn" ng-click="startFocusInput()" ng-hide="keyboard.isFocused"
+                    >Start Typing
+
+            </md-button>
+
+            <md-button class="md-primary" ng-click="stopFocusInput()" ng-show="keyboard.isFocused"
+                    > Pause
+
+            </md-button>
+
+
+            <div flex="50" class="focus-prompt" ng-enter="prompt()" tabindex="1"
+                 ng-focus="keyboard.isFocused= true"
+                 ng-blur="keyboard.isFocused= false"
+                 sync-focus-with="keyboard.isFocused"
+
+                    >
+
+
+            </div>
+            <div class="icon icon-hardware-black-ic_keyboard_black_24dp " ng-show="keyboard.isFocused"></div>
+
+
+        </div>
+
+
+        <show-answer visible="display.showAnswerByService"></show-answer>
+
+        <div>
+            <md-button ng-click="prompt()" class="md-primary">
+                Next>>
+            </md-button>
+        </div>
+
+
+        <div ng-if="data.promptCharacter">
+
+            <section layout="row" layout-sm="column" layout-align="center center">
+                <div class="signal-container">
+
+                    <div class="wrongAnswer" ng-show="display.lastAnswerWrong"> X
+                    </div>
+                    <div class="correctAnswer" ng-show="display.lastAnswerCorrect"> &#x2713;
+                    </div>
+                </div>
+
+            </section>
+
+            <div class="prompt">
+
+                <img ng-src="img/hanzi/{{data.promptCharacter.character}}" alt="" class="keyboard-layout"
+                     ng-class="{warningIndicator: data.showWarning}"
+                     style="width:50px"/>
+            </div>
+
+
+            <div>
+
+                <section layout="row" layout-sm="column" layout-align="center center">
+                    <div style="width:200px; height:30px">
+
+
+                        <md-progress-linear md-theme="blue" md-mode="determinate"
+                                            ng-value="data.percent"></md-progress-linear>
+                    </div>
+                </section>
+
+                <div layout="row" layout-align="center center" style="height: 50px">
+                    <div flex="20"></div>
+                    <div ng-show="display.showCorrectAnswer" flex="50" class="correction-hint">
+                        Sorry that was wrong, this component belongs to the
+                        <span ng-bind-html="data.characterGroupSymbol " class="character-group"> </span>group
+
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <div ng-show="display.showGroup"> {{data.promptCharacter.group}}</div>
+
+
+    <md-whiteframe class="md-whiteframe-z1" layout layout-align="center center">
+    <span>
+        <img ng-show="display.showKeyBoard" src="img/wubi86.jpg" alt="" class="keyboard-layout"/>
+        </span>
+    </md-whiteframe>
+
+
+    <div ng-show="!display.showKeyBoard"/>
+    <div ng-show="keyboard.isFocused" layout="row" layout-align="center center" class="hint">
+
+        Hint: Press ENTER to show/hide the wubi keyboard layout <br/>
+        Press SPACE to show/hide the help for the current character component
+    </div>
+</div>
+
+
+
+

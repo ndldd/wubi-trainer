@@ -1,0 +1,116 @@
+ {
+    "b": {
+        "group": "hooks",
+        "files": ["b02.png", "b04.png", "b03.png", "b07.png", "b08.png", "b05.png", "b09.png", "b01.png", "b06.png", "b10.png"]
+    }
+    ,
+    "a": {
+        "group": "horizontal",
+        "files": ["a02.png", "a01.png", "a09.png", "a05.png", "a07.png", "a08.png", "a04.png", "a03.png", "a06.png"]
+    }
+    ,
+    "w": {
+        "group": "left_falling", "files": ["w05.png", "w01.png", "w02.png", "w04.png", "w03.png"]
+    }
+    ,
+    "l": {
+        "group": "vertical",
+        "files": ["l09.png", "l07.png", "l04.png", "l01.png", "l08.png", "l05.png", "l06.png", "l03.png", "l02.png"]
+    }
+    ,
+    "d": {
+        "group": "horizontal",
+        "files": ["d08.png", "d01.png", "d07.png", "d03.png", "d06.png", "d04.png", "d11.png", "d05.png", "d12.png", "d02.png", "d10.png", "d09.png"]
+    }
+    ,
+    "f": {
+        "group": "horizontal",
+        "files": ["f02.png", "f01.png", "f04.png", "f03.png", "f06.png", "f05.png", "f08.png", "f07.png"]
+    }
+    ,
+    "g": {
+        "group": "horizontal", "files": ["g05.png", "g02.png", "g03.png", "g04.png", "g01.png"]
+    }
+    ,
+    "v": {
+        "group": "hooks", "files": ["v03.png", "v04.png", "v01.png", "v02.png", "v06.png", "v05.png"]
+    }
+    ,
+    "s": {
+        "group": "horizontal", "files": ["s02.png", "s01.png", "s03.png"]
+    }
+    ,
+    "x": {
+        "group": "hooks", "files": ["x01.png", "x03.png", "x06.png", "x02.png", "x05.png", "x04.png", "x07.png"]
+    }
+    ,
+    "m": {
+        "group": "vertical", "files": ["m04.png", "m02.png", "m05.png", "m03.png", "m06.png", "m01.png"]
+    }
+    ,
+    "o": {
+        "group": "right_falling", "files": ["o05.png", "o03.png", "o04.png", "o01.png", "o02.png"]
+    }
+    ,
+    "j": {
+        "group": "vertical",
+        "files": ["j06.png", "j04.png", "j08.png", "j03.png", "j01.png", "j07.png", "j09.png", "j05.png", "j02.png"]
+    }
+    ,
+    "u": {
+        "group": "right_falling",
+        "files": ["u06.png", "u08.png", "u07.png", "u03.png", "u09.png", "u02.png", "u05.png", "u10.png", "u04.png", "u01.png"]
+    }
+    ,
+    "c": {
+        "group": "hooks", "files": ["c01.png", "c02.png", "c05.png", "c03.png", "c06.png", "c04.png"]
+    }
+    ,
+    "q": {
+        "group": "left_falling",
+        "files": ["q12.png", "q09.png", "q10.png", "q08.png", "q05.png", "q11.png", "q07.png", "q01.png", "q04.png", "q03.png", "q02.png", "q06.png"]
+    }
+    ,
+    "t": {
+        "group": "left_falling",
+        "files": ["t02.png", "t03.png", "t01.png", "t06.png", "t05.png", "t08.png", "t04.png", "t07.png"]
+    }
+    ,
+    "e": {
+        "group": "left_falling",
+        "files": ["e04.png", "e08.png", "e01.png", "e02.png", "e12.png", "e05.png", "e06.png", "e10.png", "e03.png", "e07.png", "e09.png", "e11.png"]
+    }
+    ,
+    "y": {
+        "group": "right_falling",
+        "files": ["y07.png", "y04.png", "y08.png", "y03.png", "y02.png", "y09.png", "y06.png", "y01.png", "y05.png"]
+    }
+    ,
+    "k": {
+        "group": "vertical", "files": ["k02.png", "k01.png", "k03.png"]
+    }
+    ,
+    "i": {
+        "group": "right_falling",
+        "files": ["i02.png", "i07.png", "i03.png", "i01.png", "i04.png", "i08.png", "i10.png", "i06.png", "i05.png", "i09.png"]
+    }
+    ,
+    "n": {
+        "group": "hooks",
+        "files": ["n01.png", "n03.png", "n02.png", "n11.png", "n05.png", "n10.png", "n07.png", "n04.png", "n09.png", "n06.png", "n08.png"]
+    }
+    ,
+    "p": {
+        "group": "right_falling", "files": ["p01.png", "p05.png", "p03.png", "p06.png", "p04.png", "p02.png"]
+    }
+    ,
+    "r": {
+        "group": "left_falling",
+        "files": ["r05.png", "r09.png", "r06.png", "r03.png", "r01.png", "r02.png", "r08.png", "r04.png", "r07.png"]
+    }
+    ,
+    "h": {
+        "group": "vertical",
+        "files": ["h01.png", "h05.png", "h07.png", "h06.png", "h04.png", "h10.png", "h03.png", "h02.png", "h09.png", "h08.png"]
+    }
+}
