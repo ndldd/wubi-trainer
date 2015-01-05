@@ -1,0 +1,70 @@
+<md-subheader class="md-primary">Character sets</md-subheader>
+<div layout="row" layout-margin layout-padding>
+
+    <div>
+
+    </div>
+
+
+    <div layout="row" layout-margin>
+
+
+        <div ng-repeat="lesson in input.lessons">
+            <md-button ng-click="setList(lesson)" class="md-raised">List {{lesson+1}}
+
+            </md-button>
+
+            <md-checkbox ng-model="input.selection[lesson]" aria-label="lesson">
+
+            </md-checkbox>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div layout="column" layout-margin>
+
+    <md-subheader class="md-primary"> All Characters in this set:</md-subheader>
+    <span class="keys">
+        <span ng-repeat="char in data.fullList">
+            <img ng-src="img/hanzi/{{char.character}}" alt="" class="small-char"/>
+            {{char.key}}
+        </span>
+    </span>
+
+
+    <md-subheader class="md-primary"> not well known:</md-subheader>
+     <span class="keys">
+        <span ng-repeat="char in data.difficultChars">
+            <img ng-src="img/hanzi/{{char.character}}" alt="" class="small-char"/>
+            {{char.key}}
+        </span>
+      </span>
+
+
+    <div layout="row" layout-align="start center">
+        <md-subheader class="md-primary">Practice only characters that are not yet well known?</md-subheader>
+        <div layout-margin>
+            <md-checkbox ng-model="input.filtered" aria-label="Checkbox 1" ng-true-value="'yes'"
+                         ng-false-value="'no'">
+                {{input.filtered}}
+            </md-checkbox>
+        </div>
+
+    </div>
+
+
+    <md-subheader class="md-primary">Character components selected for practice:</md-subheader>
+    <span class="keys">
+        <span ng-repeat="char in data.learningQueue">
+            <img ng-src="img/hanzi/{{char.character}}" alt="" class="small-char"/>
+            {{char.key}}
+        </span>
+    </span>
+
+
+</div>
+
+<md-button class="md-primary" ng-click="reset()"> reset progress data</md-button>

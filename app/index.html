@@ -1,45 +1,112 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<!--[if lt IE 7]>
+<html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>My AngularJS App</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">
-  <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">
-  <link rel="stylesheet" href="app.css">
-  <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>My AngularJS App</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">
+    <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/angular_material/0.6.1/angular-material.min.css">
+
+    <link rel="stylesheet" href="bower_components/angular-material/themes/indigo-theme.css">
+    <link rel="stylesheet" href="bower_components/angular-material/themes/brown-theme.css">
+    <link rel="stylesheet" href="bower_components/angular-material/themes/grey-theme.css">
+    <link rel="stylesheet" href="bower_components/angular-material/themes/blue-theme.css">
+
+    <link href="bower_components/material-design-icons/sprites/css-sprite/sprite-hardware-black.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="app.css">
+    <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
 </head>
 <body>
-  <ul class="menu">
-    <li><a href="#/view1">view1</a></li>
-    <li><a href="#/view2">view2</a></li>
-  </ul>
+<md-content md-theme="blue">
+    <md-toolbar>
 
-  <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-  <![endif]-->
 
-  <div ng-view></div>
+        <h2 class="md-toolbar-tools" style="font-weight:bolder; ">
 
-  <div>Angular seed app: v<span app-version></span></div>
-                         http://en.wikipedia.org/wiki/Pinyin_input_method#Double_pinyin
-  <!-- In production use:
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
-  -->
-  <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/angular-route/angular-route.js"></script>
-  <script src="app.js"></script>
-  <script src="view1/view1.js"></script>
-  <script src="view2/view2.js"></script>
-  <script src="trainer/trainer.index.js"></script>
-  <script src="trainer/trainer.services.js"></script>
-  <script src="components/version/version.js"></script>
-  <script src="components/version/version-directive.js"></script>
-  <script src="components/version/interpolate-filter.js"></script>
+                                              <span>
+
+        <a href="#/practice" class="nav-btn">Practice</a>
+
+        <a href="#/setup" class="nav-btn">Lessons</a>
+        <a href="#/info" class="nav-btn">Info</a>
+                                              </span>
+
+                  <span style="color: #add8e6; display: inline; float:right; font-weight: lighter">
+
+            五筆字型輸入法
+                       </span>
+
+        </h2>
+
+
+
+    </md-toolbar>
+</md-content>
+
+
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<div ng-view></div>
+
+
+<!--
+<div>Angular seed app: v<span app-version></span></div>
+ -->
+
+<!-- In production use:
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+-->
+
+<!--<script src="//cdn.jsdelivr.net/hammerjs/2.0.4/hammer.min.js"></script>-->
+<!--<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular.min.js"></script>-->
+<!--<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-animate.min.js"></script>-->
+<!--<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-aria.min.js"></script>-->
+
+
+<script src="bower_components/hammerjs/hammer.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-material/angular-material.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-aria/angular-aria.js"></script>
+
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+
+<script src="app.js"></script>
+
+<script src="view1/practice-view.js"></script>
+<script src="view1/tutor.directives.js"></script>
+<script src="view1/practice-view.controllers.js"></script>
+<script src="view1/tutor.services.js"></script>
+<script src="view2/setup-view.js"></script>
+<script src="view3/view3.js"></script>
+
+<script src="services/key-event-services.js"></script>
+<script src="services/dataservice.js"></script>
+<script src="services/listmaker.js"></script>
+<script src="services/runner.js"></script>
+<script src="services/character.js"></script>
+<script src="services/selection.js"></script>
+<script src="services/feedback-services.js"></script>
+<script src="common/constants.js"></script>
+<script src="common/values.js"></script>
 </body>
 </html>

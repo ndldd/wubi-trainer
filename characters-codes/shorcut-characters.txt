@@ -1,0 +1,25 @@
+ASDFG zone (horizontal)
+
+    The A key's shortcut character is 工.
+    The S key's main component is 木, and its shortcut character is 要.
+    The D key's main component is 大, and its shortcut character is 在.
+    The F key's main component is 土, and its shortcut character is 地. The main component's name (earth) correlates to the shortcut character which means earth.
+    The G key's main component is 王, and its shortcut character is 一.
+
+HJKLM zone (vertical)
+
+    The H key's main component is 目, and its shortcut character is 上.
+    The J key's main component is 日, and its shortcut character is 是.
+    The K key's main component is 口, and its shortcut character is 中.
+    The L key's main component is 田, and its shortcut character is 国.
+    The M key's main component is 山, and its shortcut character is 同.
+
+XCVBN zone (hook)
+
+    The X key's main component is 纟, and its shortcut character is 经.
+    The C key's main component is 又, and its shortcut character is 以.
+    The V key's main component is 女, and its shortcut character is 发.
+    The B key's main component is 子, and its shortcut character is 了.
+    The N key's main component is 已, and its shortcut character is 民.
+
+

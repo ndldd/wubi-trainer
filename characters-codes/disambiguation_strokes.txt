@@ -1,0 +1,96 @@
+Disambiguation strokes
+
+Left-right  structur >> at the center line directly 
+T: left falling
+G: horizontal
+N: Bent
+Y: Right falling
+H: vertical
+
+top-bottom structure >>>  from to center line
+R: left falling
+F: horizontal
+B: bent
+U: right falling
+J: vertical
+
+other character structures >>>  from center line
+E: left falling
+D: horizontal
+V: Bent
+I: right falling
+K: vertical
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+heng = horizontal left to right
+shu = left falling
+pie = 
+
+
+
+     = héng 橫 "horizontal"
+     = shù 豎 "vertical"
+     = piě 撇 "left-falling"
+     = nà 捺 "right-falling"
+     = zhé 折 "bent" (but = zuǒ 左 "left" in SWZ)
+
+
+The disambiguation stroke is depending on the last stroke of a character.
+
+Left-right
+ 左右結構 (left-right structure), 
+>>>> first at the center line directly 
+T: left falling
+G: horizontal
+N: Bent
+Y: Right falling
+H: vertical
+
+    G, for characters with last stroke of 橫 (héng)
+    H, for characters with last stroke of 竪 (shù)
+    T, for characters with last stroke of 撇 (piě)
+    Y, for characters with last stroke of 捺 (nà)
+    N, for characters with last stroke of 折 (zhé)
+
+top-bottom 
+ 上下結構 (top-bottom structure), 
+>>> second from to center line
+R: left falling
+F: horizontal
+B: bent
+U: right falling
+J: vertical
+
+    F, for characters with last stroke of 橫 (héng)
+    J, for characters with last stroke of 竪 (shù)
+    R, for characters with last stroke of 撇 (piě)
+    U, for characters with last stroke of 捺 (nà)
+    B, for characters with last stroke of 折 (zhé)
+
+For other characters,
+>>> third from center line
+E: left falling
+D: horizontal
+V: Bent
+I: right falling
+K: vertical
+
+
+    D, for characters with last stroke of 橫 (héng)
+    K, for characters with last stroke of 竪 (shù)
+    E, for characters with last stroke of 撇 (piě)
+    I, for characters with last stroke of 捺 (nà)
+    V, for characters with last stroke of 折 (zhé)
+

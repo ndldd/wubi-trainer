@@ -18,7 +18,7 @@ from glob import glob
 
 os.chdir('/home/thomas/pro/ng/wubi/raw-images/xcf/')
 xcffolder = os.getcwd() +'/'
-export = xcffolder+'export/'
+export = xcffolder+'export_sub/'
 # hier gibt es unter ordner
 os.mkdir(export)
 for dir in os.listdir('.'):

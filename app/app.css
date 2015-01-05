@@ -1,34 +1,92 @@
-/* app css stylesheet */
-
-.menu {
-  list-style: none;
-  border-bottom: 0.1em solid black;
-  margin-bottom: 2em;
-  padding: 0 0 0.5em;
-}
-
-.menu:before {
-  content: "[";
-}
-
-.menu:after {
-  content: "]";
-}
-
-.menu > li {
-  display: inline;
-}
-
-.menu > li:before {
-  content: "|";
-  padding-right: 0.3em;
-}
-
-.menu > li:nth-child(1):before {
-  content: "";
-  padding: 0;
-}
-
 img.keyboard-layout {
-  width:800px;
+  width: 800px;
+}
+.prompt {
+  text-align: center;
+}
+.startme {
+  border: red;
+}
+.typeReady {
+  border: red;
+  background-color: green;
+}
+.blur {
+  background-color: red;
+}
+.red {
+  border: 1px solid red;
+}
+.keyboard-key {
+  font-family: 'Courier New';
+  font-style: italic;
+  margin-right: 10px;
+  margin-left: 10px;
+  background-color: #f8f8ff;
+  border-radius: 9px;
+  border: 1px solid #b8b8b8;
+  box-shadow: 3px 4px 2px darkgray;
+  display: inline-block;
+  padding-left: 12px;
+  padding-right: 15px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  font-weight: bold;
+}
+.focus-prompt {
+  font-weight: bolder;
+  height: 40px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.signal-container {
+  positon: relative;
+  width: 200px;
+  height: 50px;
+}
+.correctAnswer {
+  float: right;
+  top: -50px;
+  z-index: 1000;
+  left: 600px;
+  font-size: 50px;
+  color: #008000;
+  font-weight: bolder;
+}
+.wrongAnswer {
+  float: left;
+  top: -50px;
+  z-index: 1000;
+  left: 400px;
+  font-size: 50px;
+  color: red;
+  font-weight: bolder;
+}
+.small-char {
+  width: 20px;
+}
+.keys {
+  color: cornflowerblue;
+}
+.nav-btn {
+  margin-right: 30px;
+}
+.character-group {
+  font-size: 40px;
+  font-weight: bolder;
+}
+.warningIndicator {
+  box-shadow: 0px 0px 54px orange;
+  border: 1px solid orange;
+}
+.icon {
+  background-image: url(bower_components/material-design-icons/sprites/css-sprite/sprite-hardware-black.png);
+}
+.hint {
+  color: darkgray;
+}
+.md-sidenav-backdrop {
+  display: none;
 }
