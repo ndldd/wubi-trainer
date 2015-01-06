@@ -5,12 +5,23 @@ angular.module('wubi.setupView', ['ngRoute', 'ListMakerModule', 'SelectionModule
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/setup', {
             templateUrl: 'view2/setup-view-tpl.html',
-            controller: 'setupViewController'
+            controller: 'setupViewController',
+            // resolve: make sure the data promises are resolved when the controller loads.
+            resolve: {
+                characters: function (dataService) {
+                    return dataService.getRootCharacters();
+                },
+                keyCodes: function (dataService) {
+                    return dataService.getKeyCodes();
+                }
+            }
+
         });
     }])
 
 
     .controller('setupViewController', ['$scope', 'listMaker', 'runner', 'dataService', 'Selection', function ($scope, listMaker, runner, dataService, Selection) {
+
 
         //------------------------ reset data
         $scope.reset = function () {
@@ -64,6 +75,15 @@ angular.module('wubi.setupView', ['ngRoute', 'ListMakerModule', 'SelectionModule
             $scope.input.selection = sel.sets;
             $scope.input.selection[number] = true;
 
+        };
+
+        $scope.selectAll = function () {
+
+            angular.forEach(sel.sets, function (value, key) {
+                sel.sets[key] = true;
+            });
+
+            console.log(sel.sets);
         };
 
         //---------------------init

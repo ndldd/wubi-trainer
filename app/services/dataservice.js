@@ -3,7 +3,7 @@
  */
 
 angular.module('DataServicesModule', ['LocalStorageModule', 'CharacterModule']).
-    factory('dataService', ['localStorageService', '$q', '$http', 'Character', '$log', function (localStorageService, $q, $http, Character, $log) {
+    factory('dataService', ['localStorageService', '$q', '$http', 'Character', '$log', '$location', function (localStorageService, $q, $http, Character, $log, $location) {
 
         var CHARACTERS_KEY = 'characters';
         var CACHE = 'cache';
@@ -33,8 +33,14 @@ angular.module('DataServicesModule', ['LocalStorageModule', 'CharacterModule']).
                 }
 
             },
+            createCache: function () {
+
+                //this.cache = [];
+                this.save(CACHE, this.cache)
+            },
 
             loadCache: function () {
+
 
                 var cacheData = localStorageService.get(CACHE);
 
@@ -48,10 +54,9 @@ angular.module('DataServicesModule', ['LocalStorageModule', 'CharacterModule']).
 
                     });
 
-
                     this.cache = characterArray;
-
-                    //deferred.resolve(this.characterArray);
+                }
+                else {
                 }
 
 
@@ -86,7 +91,8 @@ angular.module('DataServicesModule', ['LocalStorageModule', 'CharacterModule']).
 
 
                     this.cache = characterArray;
-                    deferred.resolve(this.characterArray);
+
+                    deferred.resolve(this.cache);
                 }
                 else {
                     $http.get('view1/data.json').then(angular.bind(this, function (response) {
@@ -110,17 +116,23 @@ angular.module('DataServicesModule', ['LocalStorageModule', 'CharacterModule']).
                         //$scope.data.characters = $scope.data.characters.splice(1,25);
                         localStorageService.set(CHARACTERS_KEY, characterArray);
 
-                        this.localData = characterArray;
-                        alert('reloaded data');
+                        this.localData = characterArray;       // used for resetting data
+
+                        this.cache = characterArray;
+
                         deferred.resolve(this.localData);
+
+                        $location.path('/setup');
                     }));
                 }
                 return deferred.promise;
             }
         };
-        service.getRootCharacters();
-        service.loadCache();
-        service.getKeyCodes();
+        service.getRootCharacters().then(function () {
+
+            service.loadCache();
+            service.getKeyCodes();
+        });
         return service;
 
     }])
