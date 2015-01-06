@@ -66,6 +66,15 @@ angular.module('wubi.setupView', ['ngRoute', 'ListMakerModule', 'SelectionModule
 
         };
 
+        $scope.selectAll = function () {
+
+            angular.forEach(sel.sets, function (value, key) {
+                sel.sets[key] = true;
+            });
+
+            console.log(sel.sets);
+        };
+
         //---------------------init
         if (listMaker.selection) {
             sel = listMaker.selection;
