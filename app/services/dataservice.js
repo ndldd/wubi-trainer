@@ -3,7 +3,7 @@
  */
 
 angular.module('DataServicesModule', ['LocalStorageModule', 'CharacterModule']).
-    factory('dataService', ['localStorageService', '$q', '$http', 'Character', '$log', function (localStorageService, $q, $http, Character, $log) {
+    factory('dataService', ['localStorageService', '$q', '$http', 'Character', '$log','$location', function (localStorageService, $q, $http, Character, $log, $location) {
 
         var CHARACTERS_KEY = 'characters';
         var CACHE = 'cache';
@@ -111,7 +111,8 @@ angular.module('DataServicesModule', ['LocalStorageModule', 'CharacterModule']).
                         localStorageService.set(CHARACTERS_KEY, characterArray);
 
                         this.localData = characterArray;
-                        alert('reloaded data');
+
+                           $location.path('/setup');
                         deferred.resolve(this.localData);
                     }));
                 }
