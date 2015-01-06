@@ -21,11 +21,16 @@
 
                     //var newList = dataService.localData.slice(start, end);
 
+                    if (dataService.cache === null) {
+                        $log.error('no data cache');
+                        return [];
+                    }
                     var newList = dataService.cache.slice(start, end);
 
                     //console.log(newList);
 
                     return newList;
+
                 },
                 setSelection: function (selectionObject) {
 
