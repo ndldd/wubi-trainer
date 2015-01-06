@@ -112,8 +112,8 @@ angular.module('DataServicesModule', ['LocalStorageModule', 'CharacterModule']).
 
                         this.localData = characterArray;
 
-                           $location.path('/setup');
                         deferred.resolve(this.localData);
+                           $location.path('/setup');
                     }));
                 }
                 return deferred.promise;
