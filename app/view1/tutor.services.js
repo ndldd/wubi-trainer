@@ -1,9 +1,9 @@
 (function () {
     "use strict";
-    angular.module('tutorServices', ['DataServicesModule', 'feedbackModule'])
+    angular.module('tutorServices', ['DataServicesModule', 'feedbackModule', 'HanziModule'])
 
 
-        .factory('tutor', ['dataService', 'feedbackService', '$log', function (dataService, feedbackService, $log) {
+        .factory('tutor', ['dataService', 'feedbackService', '$log', 'Hanzi', function (dataService, feedbackService, $log, Hanzi) {
 
             var ST_EXTRA_REP = "extraRepetition";
             var ST_BETTER = 'better';
@@ -17,6 +17,7 @@
                 currentCharacter: null,
                 keyCodes: null,
                 extraKeystrokes: 0,
+                inputSequence: '',
                 // called when changing a character
                 set: function (x) {
 
@@ -31,9 +32,57 @@
 
                         }
                     }
+                    this.inputSequence = '';
                 },
 
                 check: function (number) {
+                    if (this.solution instanceof Hanzi) {
+                        this.checkHanzi(number)
+                    }
+                    else {
+
+                        this.checkComponent(number);
+                    }
+                },
+                checkHanzi: function (number) {
+                    console.log(this.solution.wubiCode);
+                    console.log(number);
+
+                    this.promptNext = false;
+                    try {
+
+                        console.log(this.keyCodes[number].letter);
+
+                        this.inputSequence += this.keyCodes[number].letter.trim();
+                        console.log(this.inputSequence);
+                        if (this.solution.wubiCode[0].indexOf(this.inputSequence) === -1) {
+                            this.inputSequence = '';
+                            var result = {answer: 'wrong'};
+                                                              feedbackService.processResult(result);
+
+                        }
+                        if (this.solution.wubiCode[0] === this.inputSequence) {
+                            console.log('correct');
+                            this.currentCharacter.readyToRemove = true;
+                            this.currentCharacter.status = ST_CORRECT;
+                            this.promptNext = true;
+                            this.inputSequence = '';
+                            var result = {answer: ST_CORRECT};
+                            feedbackService.processResult(result);
+
+                            return true;
+
+                        }
+
+                    }
+                    catch
+                        (e) {
+                        $log.info('no keycode');
+                    }
+
+                }
+                ,
+                checkComponent: function (number) {
                     var result = {
                         status: null,
                         answer: null
@@ -101,11 +150,13 @@
                     this.promptNext = false;
                     return true;
 
-                },
+                }
+                ,
                 setExtraKeystrokes: function () {
                     //console.log('setting extra Keystrokes: ');
                     this.extraKeystrokes = NUMBER_EXTRA_KEYSTROKES;
-                },
+                }
+                ,
                 checkPromptNext: function () {
                     if (this.extraKeystrokes > 0) {
 
@@ -117,7 +168,8 @@
                         //console.log('no extra keystrokes ', this.extraKeystrokes);
                         return true;
                     }
-                },
+                }
+                ,
 
                 markWrong: function () {
                     if (angular.isDefined(this.currentCharacter) && this.currentCharacter !== null) {
