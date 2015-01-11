@@ -2,8 +2,8 @@
  * Created by thomas on 21.12.14.
  */
 
-angular.module('DataServicesModule', ['LocalStorageModule', 'CharacterModule']).
-    factory('dataService', ['localStorageService', '$q', '$http', 'Character', '$log', '$location', function (localStorageService, $q, $http, Character, $log, $location) {
+angular.module('DataServicesModule', ['LocalStorageModule', 'CharacterModule', 'HanziModule']).
+    factory('dataService', ['localStorageService', '$q', '$http', 'Character', '$log', '$location', 'Hanzi', function (localStorageService, $q, $http, Character, $log, $location, Hanzi) {
 
         var CHARACTERS_KEY = 'characters';
         var CACHE = 'cache';
@@ -125,6 +125,25 @@ angular.module('DataServicesModule', ['LocalStorageModule', 'CharacterModule']).
                         $location.path('/setup');
                     }));
                 }
+                return deferred.promise;
+            },
+            getHanzis: function () {
+                deferred = $q.defer();
+                var hanzis = [];
+
+
+                $http.get('view1/hanzis.json').then(angular.bind(this, function (response) {
+
+                    this.hanziList = hanziList = response.data;
+                    //hanziList =[{character: '是', wubiCode: ['abcd']}, {character: '不', wubiCode: ['uu']}];
+                    angular.forEach(hanziList, function (hanzi) {
+
+                        hanzis.push(new Hanzi(hanzi));
+                    });
+                    deferred.resolve(hanzis);
+
+
+                }));
                 return deferred.promise;
             }
         };
