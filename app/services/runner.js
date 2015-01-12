@@ -25,7 +25,10 @@
                         this.learningQueue.push(list[i]);
                     }
                     this.updatePercent();
-                    this.randomize();
+                    if (listMaker.selection && listMaker.selection.random) {
+
+                        this.randomize();
+                    }
 
                 },
 
@@ -81,7 +84,10 @@
                 start: function () {
                     //console.log('tutor', this.getCurrent());
                     //console.log('tutor', this.learningQueue[this.currentIndex]);
-                    this.randomize();
+                    if (listMaker.selection && listMaker.selection.random) {
+                        this.randomize();
+
+                    }
                     tutor.set(this.getCurrent());
                 },
 

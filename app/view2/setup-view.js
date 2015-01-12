@@ -130,6 +130,7 @@ angular.module('wubi.setupView', ['ngRoute', 'ListMakerModule', 'SelectionModule
             list = wubiLength(list, keystrokeNumber);
             $scope.hanziData.selected = list;
 
+            listMaker.selection.random=false;
             runner.setLearningQueue($scope.hanziData.selected);
             //console.log(runner.learningQueue[0] instanceof Hanzi);
 

@@ -84,9 +84,15 @@ img.keyboard-layout {
 .icon {
   background-image: url(bower_components/material-design-icons/sprites/css-sprite/sprite-hardware-black.png);
 }
+.icon_white {
+  background-image: url(bower_components/material-design-icons/sprites/css-sprite/sprite-action-white.png);
+}
 .hint {
   color: darkgray;
 }
 .md-sidenav-backdrop {
   display: none;
+}
+.lookup-wubi {
+  font-weight: bolder;
 }

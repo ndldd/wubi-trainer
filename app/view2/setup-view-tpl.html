@@ -89,8 +89,31 @@
 
         </div>
         <div id="tab2-content" ng-switch-when="1">
-            <div ng-controller="HanziSetupController">
-                <md-subheader class="md-primary"> Select Hanzi by number of wubi-keystrokes:</md-subheader>
+            <div ng-controller="HanziSetupController" layout-margin layout-padding>
+
+
+                <md-subheader class="md-primary"> Typing hanzis:</md-subheader>
+                When you are familiar with the locations of the character components you can start typing hanzis:
+                <ul>
+                    <li>
+
+                        Type the components in the order you would write them.
+                    </li>
+                    <li>
+
+                        if a character has more than four components type the first three and the last component.
+                    </li>
+
+                    <li>if a character has less than four components, entering those might not be enough to produce a character.
+                        In this case a disambiguation stroke is applied (which depends on the last stroke and the overall structure of the character)
+                        <a href="https://en.wikipedia.org/wiki/Wubi_method#Disambiguation_strokes" target="_blank">more info</a>
+
+                    </li>
+                </ul>
+
+
+
+                <md-subheader class="md-primary"> Select hanzis by number of wubi-keystrokes:</md-subheader>
 
 
                 <span ng-repeat="keystrokeNumber in [1,2,3,4]">
@@ -103,7 +126,7 @@
             <span class="">
                 <div ng-repeat="hanzi in hanziData.selected">
 
-                    {{hanzi.character}} {{hanzi.wubiCode}}
+                    {{hanzi.character}} "{{hanzi.wubiCode[0]}}"
                 </div>
             </span>
 

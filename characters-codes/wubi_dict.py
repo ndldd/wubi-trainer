@@ -27,7 +27,7 @@ c = a.merge(b)
 
 print(c.head())
 d = c.sort('individualfreq')
-e = d[['character', 'wubi', 'individualfreq']]
+e = d[['character', 'wubi', 'individualfreq','meaning','pinyin']]
 
 # print(e.tail(100))
 
@@ -44,14 +44,20 @@ for index, row in e.iterrows():
 
 
 
-    liste.append({"character": str(row.character), "wubiCode": [str(row.wubi)]});
+    liste.append(
+        {"character": str(row.character),
+         "wubiCode": [str(row.wubi)],
+         "meaning": [str(row.meaning)],
+         "pinyin": [str(row.pinyin)],
+        }
+    );
 
     # file.write(line);
 
     # file.write('}')
-with open('hanzis.json', 'w') as file:
+with open('dict.json', 'w') as file:
     pass
-    # json_string= json.dumps(liste)
-    # file.write(json_string)
+    json_string = json.dumps(liste)
+    file.write(json_string)
 
 

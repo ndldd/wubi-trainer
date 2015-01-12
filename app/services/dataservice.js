@@ -140,6 +140,43 @@ angular.module('DataServicesModule', ['LocalStorageModule', 'CharacterModule', '
 
                         hanzis.push(new Hanzi(hanzi));
                     });
+                    hanzis.reverse();  // sorted most common first
+                    deferred.resolve(hanzis);
+
+
+                }));
+                return deferred.promise;
+            },
+
+            getDict: function () {
+
+                deferred = $q.defer();
+                var hanzis = {};
+
+
+                $http.get('view1/dict.json').then(angular.bind(this, function (response) {
+
+                    this.hanziList = hanziList = response.data;
+                    console.log(response.data[0]);
+                    //hanziList =[{character: '是', wubiCode: ['abcd']}, {character: '不', wubiCode: ['uu']}];
+                    angular.forEach(hanziList, function (hanzi) {
+
+                        if (angular.isDefined(hanzis[hanzi.character])){
+                            hanzis[hanzi.character].wubiCode.push(hanzi.wubiCode[0]);
+
+                        }
+                        else {
+
+                        hanzis[hanzi.character] = hanzi;
+                        }
+                        //hanzis.push(new Hanzi(hanzi));
+                        //hanzis.push(hanzi);
+                        //var lookup = {};
+                        //for (var i = 0, len = array.length; i < len; i++) {
+                        //    lookup[array[i].id] = array[i];
+                        //}
+                    });
+                    //hanzis.reverse();  // sorted most common first
                     deferred.resolve(hanzis);
 
 
@@ -147,6 +184,8 @@ angular.module('DataServicesModule', ['LocalStorageModule', 'CharacterModule', '
                 return deferred.promise;
             }
         };
+
+
         service.getRootCharacters().then(function () {
 
             service.loadCache();

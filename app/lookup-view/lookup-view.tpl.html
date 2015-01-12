@@ -1,0 +1,36 @@
+<div layout="column" layout-margin>
+
+
+    <div>
+        Please enter a hanzi character and press ENTER
+        <form ng-submit="lookup()">
+
+            <input type="text" ng-model="input.hanzi"/>
+            <md-button class="md-raised" type="submit"> Search</md-button>
+        </form>
+
+    </div>
+
+
+    <div ng-if="output.result">
+
+        <div> {{output.result.character}}</div>
+        <div> Meaning: {{output.result.meaning[0]}}
+        </div>
+
+        <div> Pinyin: {{output.result.pinyin[0]}}
+        </div>
+
+        <div>
+
+            Wubi Code:
+            <ul>
+                <li ng-repeat="code in output.result.wubiCode" class="lookup-wubi">
+                    {{code}}
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+</div>
