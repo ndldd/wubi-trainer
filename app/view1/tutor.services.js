@@ -55,7 +55,7 @@
 
                         this.inputSequence += this.keyCodes[number].letter.trim();
                         console.log(this.inputSequence);
-                        if (this.solution.wubiCode[0].indexOf(this.inputSequence) === -1) {
+                        if (this.solution.wubiCode[0].indexOf(this.inputSequence) !== 0) {
                             this.inputSequence = '';
                             var result = {answer: 'wrong'};
                                                               feedbackService.processResult(result);

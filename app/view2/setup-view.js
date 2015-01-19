@@ -109,7 +109,7 @@ angular.module('wubi.setupView', ['ngRoute', 'ListMakerModule', 'SelectionModule
     }]).controller('TabsController', ['$scope', function ($scope) {
 
         $scope.tabs = {};
-        $scope.tabs.selectedIndex = 1;
+        $scope.tabs.selectedIndex = 0;           // default view is character components
 
 
     }]).controller('HanziSetupController', ['$scope', 'listMaker', 'dataService', 'runner', 'Hanzi', 'wubiLengthFilter', function ($scope, listMaker, dataService, runner, Hanzi, wubiLength) {
