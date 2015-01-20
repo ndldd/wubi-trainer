@@ -99,7 +99,7 @@
         }])
 
 
-        .controller('PromptController', ['$scope', 'runner', '$log', '$timeout', 'CHARACTER_GROUPS', function ($scope, runner, $log, $timeout, CHARACTER_GROUPS) {
+        .controller('PromptController', ['$scope', 'runner', '$log', '$timeout', 'CHARACTER_GROUPS', 'Hanzi', 'tutor', function ($scope, runner, $log, $timeout, CHARACTER_GROUPS, Hanzi, tutor) {
             // reflect the data changes in the model
             //--------------- set group symbol on scope : content of sidebar via scope inheritance
             $scope.setCharacterGroupSymbol = function (groupName) {
@@ -121,7 +121,20 @@
                 }
                 $scope.data.showWarning = false;
             };
+            $scope.isHanzi = function (obj) {
+                return obj instanceof Hanzi;
+            };
+            $scope.input = {inputSequence: tutor.inputSequence};
 
+            $scope.$watch(function () {
+                return tutor.inputSequence
+            }, function (nv, ov) {
+                if (nv!==ov){
+
+                $scope.input = {inputSequence: tutor.inputSequence};
+                }
+
+            });
 
             //---------------init
             $scope.data = {};

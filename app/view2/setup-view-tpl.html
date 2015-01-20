@@ -1,33 +1,48 @@
-<md-subheader class="md-primary">Character sets</md-subheader>
-<div layout="row" layout-margin layout-padding>
+<div ng-controller="TabsController">
+    <md-tabs class="md-accent" md-selected="tabs.selectedIndex">
+        <md-tab id="tab1">
+            character components
+        </md-tab>
 
-    <div>
+        <md-tab id="tab2">
+            hanzis
+        </md-tab>
 
-    </div>
+    </md-tabs>
+    <ng-switch on="tabs.selectedIndex" id="tab1-content" class="tabpanel-container">
 
 
-    <div layout="row" layout-margin>
+        <div ng-switch-when="0">
+            <md-subheader class="md-primary">Character component sets</md-subheader>
+            <div layout="row" layout-margin layout-padding>
+
+                <div>
+
+                </div>
 
 
-        <div ng-repeat="lesson in input.lessons">
-            <md-button ng-click="setList(lesson)" class="md-raised">List {{lesson+1}}
+                <div layout="row" layout-margin>
 
-            </md-button>
 
-            <md-checkbox ng-model="input.selection[lesson]" aria-label="lesson">
+                    <div ng-repeat="lesson in input.lessons">
+                        <md-button ng-click="setList(lesson)" class="md-raised">List {{lesson+1}}
 
-            </md-checkbox>
+                        </md-button>
 
-        </div>
+                        <md-checkbox ng-model="input.selection[lesson]" aria-label="lesson">
 
-    </div>
+                        </md-checkbox>
 
-</div>
-<md-button ng-click="selectAll()" class="md-raised"> select all</md-button>
+                    </div>
 
-<div layout="column" layout-margin>
+                </div>
 
-    <md-subheader class="md-primary"> All Characters in this set:</md-subheader>
+            </div>
+            <md-button ng-click="selectAll()" class="md-raised"> select all</md-button>
+
+            <div layout="column" layout-margin>
+
+                <md-subheader class="md-primary"> All components in this set:</md-subheader>
     <span class="keys">
         <span ng-repeat="char in data.fullList">
             <img ng-src="img/hanzi/{{char.character}}" alt="" class="small-char"/>
@@ -36,7 +51,7 @@
     </span>
 
 
-    <md-subheader class="md-primary"> not well known:</md-subheader>
+                <md-subheader class="md-primary"> not well known:</md-subheader>
      <span class="keys">
         <span ng-repeat="char in data.difficultChars">
             <img ng-src="img/hanzi/{{char.character}}" alt="" class="small-char"/>
@@ -45,27 +60,78 @@
       </span>
 
 
-    <div layout="row" layout-align="start center">
-        <md-subheader class="md-primary">Practice only characters that are not yet well known?</md-subheader>
-        <div layout-margin>
-            <md-checkbox ng-model="input.filtered" aria-label="Checkbox 1" ng-true-value="'yes'"
-                         ng-false-value="'no'">
-                {{input.filtered}}
-            </md-checkbox>
+                <div layout="row" layout-align="start center">
+                    <md-subheader class="md-primary">Practice only characters that are not yet well known?
+                    </md-subheader>
+                    <div layout-margin>
+                        <md-checkbox ng-model="input.filtered" aria-label="Checkbox 1" ng-true-value="'yes'"
+                                     ng-false-value="'no'">
+                            {{input.filtered}}
+                        </md-checkbox>
+                    </div>
+
+                </div>
+
+                <!--
+                <md-subheader class="md-primary">Character components selected for practice:</md-subheader>
+                <span class="keys">
+                    <span ng-repeat="char in data.learningQueue">
+                        <img ng-src="img/hanzi/{{char.character}}" alt="" class="small-char"/>
+                        {{char.key}}
+                    </span>
+                </span>
+                 -->
+
+
+            </div>
+
+            <md-button class="md-primary" ng-click="reset()"> reset progress data</md-button>
+
         </div>
-
-    </div>
-
-
-    <md-subheader class="md-primary">Character components selected for practice:</md-subheader>
-    <span class="keys">
-        <span ng-repeat="char in data.learningQueue">
-            <img ng-src="img/hanzi/{{char.character}}" alt="" class="small-char"/>
-            {{char.key}}
-        </span>
-    </span>
+        <div id="tab2-content" ng-switch-when="1">
+            <div ng-controller="HanziSetupController" layout-margin layout-padding>
 
 
+                <md-subheader class="md-primary"> Typing hanzis:</md-subheader>
+                When you are familiar with the locations of the character components you can start typing hanzis:
+                <ul>
+                    <li>
+
+                        Type the components in the order you would write them.
+                    </li>
+                    <li>
+
+                        if a character has more than four components type the first three and the last component.
+                    </li>
+
+                    <li>if a character has less than four components, entering those might not be enough to produce a character.
+                        In this case a disambiguation stroke is applied (which depends on the last stroke and the overall structure of the character)
+                        <a href="https://en.wikipedia.org/wiki/Wubi_method#Disambiguation_strokes" target="_blank">more info</a>
+
+                    </li>
+                </ul>
+
+
+
+                <md-subheader class="md-primary"> Select hanzis by number of wubi-keystrokes:</md-subheader>
+
+
+                <span ng-repeat="keystrokeNumber in [1,2,3,4]">
+
+                <md-button class="md-raised" ng-click="setupHanzis(keystrokeNumber)"> {{keystrokeNumber}}</md-button>
+                </span>
+
+
+                <md-subheader class="md-primary"> Hanzis in this set:</md-subheader>
+            <span class="">
+                <div ng-repeat="hanzi in hanziData.selected">
+
+                    {{hanzi.character}} "{{hanzi.wubiCode[0]}}"
+                </div>
+            </span>
+
+
+            </div>
+        </div>
+    </ng-switch>
 </div>
-
-<md-button class="md-primary" ng-click="reset()"> reset progress data</md-button>

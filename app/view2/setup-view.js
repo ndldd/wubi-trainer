@@ -13,6 +13,9 @@ angular.module('wubi.setupView', ['ngRoute', 'ListMakerModule', 'SelectionModule
                 },
                 keyCodes: function (dataService) {
                     return dataService.getKeyCodes();
+                },
+                hanzis: function (dataService) {
+                    return dataService.getHanzis();
                 }
             }
 
@@ -83,7 +86,7 @@ angular.module('wubi.setupView', ['ngRoute', 'ListMakerModule', 'SelectionModule
                 sel.sets[key] = true;
             });
 
-            console.log(sel.sets);
+            //console.log(sel.sets);
         };
 
         //---------------------init
@@ -103,4 +106,49 @@ angular.module('wubi.setupView', ['ngRoute', 'ListMakerModule', 'SelectionModule
         $scope.data.learningQueue = runner.learningQueue;
 
 
+    }]).controller('TabsController', ['$scope', function ($scope) {
+
+        $scope.tabs = {};
+        $scope.tabs.selectedIndex = 0;           // default view is character components
+
+
+    }]).controller('HanziSetupController', ['$scope', 'listMaker', 'dataService', 'runner', 'Hanzi', 'wubiLengthFilter', function ($scope, listMaker, dataService, runner, Hanzi, wubiLength) {
+        $scope.hanziData = {};
+        dataService.getHanzis().then(function (data) {
+
+            $scope.hanziData.fullList = data;
+            //console.log('tet',$scope.hanziData.fullList);
+        });
+
+
+        $scope.setupHanzis = function (keystrokeNumber) {
+
+            var list = $scope.hanziData.fullList.slice(0, 10);
+            var list = $scope.hanziData.fullList;
+
+            //console.log('listlength', list.length);
+            list = wubiLength(list, keystrokeNumber);
+            $scope.hanziData.selected = list;
+
+            listMaker.selection.random=false;
+            runner.setLearningQueue($scope.hanziData.selected);
+            //console.log(runner.learningQueue[0] instanceof Hanzi);
+
+
+        };
+
+    }]).filter('wubiLength', [function () {
+        return function (input, keystrokeNumber) {
+            var copy = [];
+            for (var i = 0; i < input.length; i++) {
+                //console.log(input[i]);
+                if (input[i].wubiCode[0].length === keystrokeNumber) {
+
+                    copy.push(input[i]);
+                }
+            }
+
+            //console.log('input', input);
+            return copy;
+        }
     }]);

@@ -22,22 +22,32 @@
                     <md-button ng-click="close()" class="md-primary">
                         Close
                     </md-button>
-                    <div>
+                    <div ng-if="isHanzi(data.promptCharacter)" >
 
-                        This character component is located on the
+                    the wubi code of this character is:
+                        <div style="font-size: 33px;">
+
+                    {{data.promptCharacter.wubiCode[0]}}
+                        </div>
+
+                    </div>
+                    <div ng-if="!isHanzi(data.promptCharacter)">
+                        <div>
+
+                            This character component is located on the
                           <span class="keyboard-key"> {{data.promptCharacter.key.toUpperCase()}}
                                 </span> key.
+                        </div>
+
+
+                        <div>
+                            Group: <span ng-bind-html="data.characterGroupSymbol " class="character-group"> </span>
+                        </div>
+                        <div>
+
+                            (First Stroke is in the {{data.promptCharacter.group}} group)
+                        </div>
                     </div>
-
-
-                    <div>
-                        Group: <span ng-bind-html="data.characterGroupSymbol " class="character-group"> </span>
-                    </div>
-                    <div>
-
-                        (First Stroke is in the {{data.promptCharacter.group}} group)
-                    </div>
-
 
                 </md-content>
             </md-sidenav>
@@ -69,11 +79,13 @@
 
         <show-answer visible="display.showAnswerByService"></show-answer>
 
+            <!--
         <div>
             <md-button ng-click="prompt()" class="md-primary">
                 Next>>
             </md-button>
         </div>
+         -->
 
 
         <div ng-if="data.promptCharacter">
@@ -90,10 +102,23 @@
             </section>
 
             <div class="prompt">
+                <span ng-if="!isHanzi(data.promptCharacter)">
 
                 <img ng-src="img/hanzi/{{data.promptCharacter.character}}" alt="" class="keyboard-layout"
                      ng-class="{warningIndicator: data.showWarning}"
                      style="width:50px"/>
+
+                </span>
+                <span ng-if="isHanzi(data.promptCharacter)" style="font-size: 33px;">
+                    {{data.promptCharacter.character}}
+                    <!--
+                    {{data.promptCharacter.wubiCode}}
+                      -->
+
+                    {{input.inputSequence}}
+                </span>
+
+
             </div>
 
 
@@ -111,8 +136,12 @@
                 <div layout="row" layout-align="center center" style="height: 50px">
                     <div flex="20"></div>
                     <div ng-show="display.showCorrectAnswer" flex="50" class="correction-hint">
-                        Sorry that was wrong, this component belongs to the
+                        Sorry that was wrong
+                        <span ng-if="!isHanzi(data.promptCharacter)">
+
+                        , this component belongs to the
                         <span ng-bind-html="data.characterGroupSymbol " class="character-group"> </span>group
+                        </span>
 
                     </div>
 

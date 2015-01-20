@@ -2,8 +2,8 @@
  * Created by thomas on 21.12.14.
  */
 
-angular.module('DataServicesModule', ['LocalStorageModule', 'CharacterModule']).
-    factory('dataService', ['localStorageService', '$q', '$http', 'Character', '$log', '$location', function (localStorageService, $q, $http, Character, $log, $location) {
+angular.module('DataServicesModule', ['LocalStorageModule', 'CharacterModule', 'HanziModule']).
+    factory('dataService', ['localStorageService', '$q', '$http', 'Character', '$log', '$location', 'Hanzi', function (localStorageService, $q, $http, Character, $log, $location, Hanzi) {
 
         var CHARACTERS_KEY = 'characters';
         var CACHE = 'cache';
@@ -126,8 +126,66 @@ angular.module('DataServicesModule', ['LocalStorageModule', 'CharacterModule']).
                     }));
                 }
                 return deferred.promise;
+            },
+            getHanzis: function () {
+                deferred = $q.defer();
+                var hanzis = [];
+
+
+                $http.get('view1/hanzis.json').then(angular.bind(this, function (response) {
+
+                    this.hanziList = hanziList = response.data;
+                    //hanziList =[{character: '是', wubiCode: ['abcd']}, {character: '不', wubiCode: ['uu']}];
+                    angular.forEach(hanziList, function (hanzi) {
+
+                        hanzis.push(new Hanzi(hanzi));
+                    });
+                    hanzis.reverse();  // sorted most common first
+                    deferred.resolve(hanzis);
+
+
+                }));
+                return deferred.promise;
+            },
+
+            getDict: function () {
+
+                deferred = $q.defer();
+                var hanzis = {};
+
+
+                $http.get('view1/dict.json').then(angular.bind(this, function (response) {
+
+                    this.hanziList = hanziList = response.data;
+                    console.log(response.data[0]);
+                    //hanziList =[{character: '是', wubiCode: ['abcd']}, {character: '不', wubiCode: ['uu']}];
+                    angular.forEach(hanziList, function (hanzi) {
+
+                        if (angular.isDefined(hanzis[hanzi.character])){
+                            hanzis[hanzi.character].wubiCode.push(hanzi.wubiCode[0]);
+
+                        }
+                        else {
+
+                        hanzis[hanzi.character] = hanzi;
+                        }
+                        //hanzis.push(new Hanzi(hanzi));
+                        //hanzis.push(hanzi);
+                        //var lookup = {};
+                        //for (var i = 0, len = array.length; i < len; i++) {
+                        //    lookup[array[i].id] = array[i];
+                        //}
+                    });
+                    //hanzis.reverse();  // sorted most common first
+                    deferred.resolve(hanzis);
+
+
+                }));
+                return deferred.promise;
             }
         };
+
+
         service.getRootCharacters().then(function () {
 
             service.loadCache();

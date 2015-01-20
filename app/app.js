@@ -9,6 +9,7 @@ angular.module('wubi', [
 
     'wubi.practiceView',
     'wubi.setupView',
+    'wubi.lookupView',
     'wubi.infoView'
 
 ]).

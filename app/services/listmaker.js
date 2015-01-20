@@ -35,6 +35,7 @@
                 setSelection: function (selectionObject) {
 
                     this.selection = selectionObject;
+                    this.selection.random=true;
 
                     this.makeListFromSelectionObject(this.selection);
 

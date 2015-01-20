@@ -27,7 +27,6 @@ angular.module('SelectionModule', []).service('Selection', function () {
     };
 
 
-
     return Selection;
 
 });
